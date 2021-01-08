@@ -1,1 +1,18 @@
-<a href="{{ url_for('home_bp.home') }}">Home</a>
+{% extends "layout.jinja2" %}
+
+{% block content %}
+    <a href="{{ url_for('home_bp.home') }}">Home</a>
+
+    <form method="POST">
+        <input type="text" name="username" autocomplete="off">
+        <input type="password" name="password"  autocomplete="off">
+        <input type="submit" value="submit">
+    </form>
+
+    <ul>
+    {% for disk in disks %}
+        <li>{{disk.name}} {{disk.is_open()}}</li>
+    {% endfor %}
+    </ul>
+
+{% endblock %}

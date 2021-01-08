@@ -14,7 +14,7 @@ class Config:
     # SESSION_COOKIE_NAME = environ.get('SESSION_COOKIE_NAME')
     STATIC_FOLDER = 'static'
     TEMPLATES_FOLDER = 'templates'
-
+    TEMPLATES_AUTO_RELOAD = True
 
 class ProdConfig(Config):
     FLASK_ENV = 'production'
