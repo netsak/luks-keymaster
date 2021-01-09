@@ -1,0 +1,25 @@
+<h1>Create new settings</h1>
+
+<div class="formwrapper">
+  <h2 class="title">Contact</h2>
+  <form method="POST" action="{{request.path}}">
+
+    <div class="form-field">
+      {{ form.disk1.label }}
+      {{ form.disk1(size=20) }}
+      {{ form.mount1.label }}
+      {{ form.mount1(size=20) }}
+      {{ form.passphrase1.label }}
+      {{ form.passphrase1(size=40) }}
+    </div>
+    <div class="form-field">
+      {{ form.disk2.label }}
+      {{ form.disk2(size=20) }}
+      {{ form.mount2.label }}
+      {{ form.mount2(size=20) }}
+      {{ form.passphrase2.label }}
+      {{ form.passphrase2(size=40) }}
+    </div>
+    {{ form.submit }}
+  </form>
+</div>

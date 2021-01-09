@@ -27,10 +27,12 @@ def create_app():
 
         # Import parts of our application
         from .home import home
+        from .settings.blueprint import settings_bp
         # from .artist import artist
         # from .exercise import exercise
 
         # Register Blueprints
+        app.register_blueprint(settings_bp, url_prefix="/settings")
         app.register_blueprint(home.home_bp)
         # app.register_blueprint(artist.artist_bp, url_prefix="/api/artist")
         # app.register_blueprint(exercise.exercise_bp, url_prefix="/exercise")

@@ -15,6 +15,8 @@ class Config:
     STATIC_FOLDER = 'static'
     TEMPLATES_FOLDER = 'templates'
     TEMPLATES_AUTO_RELOAD = True
+    SECRET_KEY=b"powerful secretkey"
+    # WTF_CSRF_SECRET_KEY=b"a csrf secret key"
 
 class ProdConfig(Config):
     FLASK_ENV = 'production'
