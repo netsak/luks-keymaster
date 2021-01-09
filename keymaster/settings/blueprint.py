@@ -6,6 +6,7 @@ from flask import current_app as app
 from flask_wtf import FlaskForm
 from wtforms import StringField, TextField, SubmitField, FieldList, Form
 from wtforms.validators import DataRequired, Length
+from keymaster.settings import settings
 
 
 # Blueprint Configuration
@@ -34,23 +35,25 @@ class SettingsForm(FlaskForm):
 def create():
     """Create new settings if none are configured"""
     # products = fetch_products(app)
-    print("config", app.config)
-    content = {
-        "disk2": "/dev/sdb2",
-        "mount2": "/mnt/disk2",
-        "passphrase2": "aaaa.bbbb.ccc"
-    }
-    form = SettingsForm(data=content)
+    # content = {
+    #     "disk2": "/dev/sdb2",
+    #     "mount2": "/mnt/disk2",
+    #     "passphrase2": "aaaa.bbbb.ccc"
+    # }
+    form = SettingsForm(data=app.settings.data())
     # form.data.update(content)
-    print("request.form", request.form)
+    print("request.form", request.form, app.settings)
     if request.method == "POST":
         # form.populate_obj(request.form)
-        print("unlock", g)
+        app.settings.update(form.data)
+        app.settings.save()
     print("form", form.data)
     
     return render_template(
         "index.html",
         form=form,
+        public_filename=app.settings.public_filename,
+        private_filename="none",
         title="Flask Blueprint Demo",
         subtitle="Demonstration of Flask blueprints in action.",
         template="home-template",

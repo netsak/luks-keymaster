@@ -1,4 +1,4 @@
-from flask import Flask, send_from_directory, jsonify
+from flask import Flask, send_from_directory, jsonify, g, session
 from werkzeug.exceptions import InternalServerError
 
 
@@ -21,8 +21,10 @@ def create_app():
     # Initialize Plugins
     # db.init_app(app)
     # r.init_app(app)
+    from .settings import  settings
 
     with app.app_context():
+        app.settings = settings.Settings(app.config["SETTINGS_PUBLIC"])
         # from . import routes  # Import routes
 
         # Import parts of our application
