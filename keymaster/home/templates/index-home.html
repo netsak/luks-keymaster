@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <ul>
+    {% for disk in disks %}
+        <li>{{disk.name}}: {{disk.free}} of {{disk.total}} are free</li>
+        <div class="disk-bar">
+            <div class="disk-usage" style="width:{{disk.percent}}%">
+                &nbsp;&nbsp;{{disk.percent|round}}%
+            </div>
+        </div>
+    {% endfor %}
+    </ul>
+
+{% endblock %}

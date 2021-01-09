@@ -9,7 +9,9 @@ def settings_required(f):
     """settings required redirects to the settings page if no settings are configured"""
     @wraps(f)
     def decorated_function(*args, **kwargs):
+        print("checking settings, app.setting", app.settings)
         if app.settings is None:
+            print("no settings found redirecting")
             return redirect(url_for("settings", next=request.url))
         return f(*args, **kwargs)
     return decorated_function

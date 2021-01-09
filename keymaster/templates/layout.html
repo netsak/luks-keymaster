@@ -8,11 +8,27 @@
   <meta name="HandheldFriendly" content="True" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <link rel="shortcut icon" href="" type="image/x-icon" />
-  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500" rel="stylesheet">
   <meta name="theme-color" content="#5eb9d7" />
+  <link rel="stylesheet" href="/static/style.css">
 </head>
 
 <body>
+  <div class="logo">
+    <img src="/static/luks-logo.png" />
+  </div>
+  <div>
+    endpoint: {{request.endpoint}}<br>
+    endpoint: {{request.url}}<br>
+    endpoint: {{request.path}}<br>
+    endpoint: {{request.script_root}}<br>
+    endpoint: {{request.blueprint}}<br>
+  </div>
+    <nav>
+        <a href="{{ url_for('home_bp.home') }}">Home</a>
+        <a href="{{ url_for('settings_bp.create') }}">Settings</a>
+    </nav>
+
+
   {% block content %}{% endblock %}
 </body>
 

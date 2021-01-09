@@ -4,7 +4,7 @@ Blueprint for settings management
 from flask import Blueprint, render_template, send_from_directory, redirect, request, g
 from flask import current_app as app
 from flask_wtf import FlaskForm
-from wtforms import StringField, TextField, SubmitField, FieldList, Form
+from wtforms import StringField, TextField, SubmitField, FieldList, Form, PasswordField
 from wtforms.validators import DataRequired, Length
 from keymaster.settings import settings
 
@@ -19,6 +19,9 @@ settings_bp = Blueprint(
 
 
 class SettingsForm(FlaskForm):
+    username = TextField("Username")
+    password = PasswordField("Password")
+
     disk1 = TextField("Disk1", default="/dev/sda1")
     mount1 = TextField("Mount1", default="/mnt/disk1")
     passphrase1 = TextField("Passphrase1")

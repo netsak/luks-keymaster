@@ -1,30 +1,41 @@
-<h1>Create new settings</h1>
+{% extends "layout.html" %}
 
-<pre>
-public: {{public_filename}}
-private: {{private_filename}}
-</pre>
+{% block content %}
+  <h1>Create new settings</h1>
 
-<div class="formwrapper">
-  <h2 class="title">Contact</h2>
-  <form method="POST" action="{{request.path}}">
+  <pre>
+  public: {{public_filename}}
+  private: {{private_filename}}
+  </pre>
 
-    <div class="form-field">
-      {{ form.disk1.label }}
-      {{ form.disk1(size=20) }}
-      {{ form.mount1.label }}
-      {{ form.mount1(size=20) }}
-      {{ form.passphrase1.label }}
-      {{ form.passphrase1(size=40) }}
-    </div>
-    <div class="form-field">
-      {{ form.disk2.label }}
-      {{ form.disk2(size=20) }}
-      {{ form.mount2.label }}
-      {{ form.mount2(size=20) }}
-      {{ form.passphrase2.label }}
-      {{ form.passphrase2(size=40) }}
-    </div>
-    {{ form.submit }}
-  </form>
-</div>
+  <div class="formwrapper">
+    <h2 class="title">Contact</h2>
+    <form method="POST" action="{{request.path}}" autocomplete="off">
+
+      <div class="form-field">
+        {{ form.username.label }}
+        {{ form.username(size=20) }}
+        {{ form.password.label }}
+        {{ form.password(size=20) }}
+      </div>
+
+      <div class="form-field">
+        {{ form.disk1.label }}
+        {{ form.disk1(size=20) }}
+        {{ form.mount1.label }}
+        {{ form.mount1(size=20) }}
+        {{ form.passphrase1.label }}
+        {{ form.passphrase1(size=40) }}
+      </div>
+      <div class="form-field">
+        {{ form.disk2.label }}
+        {{ form.disk2(size=20) }}
+        {{ form.mount2.label }}
+        {{ form.mount2(size=20) }}
+        {{ form.passphrase2.label }}
+        {{ form.passphrase2(size=40) }}
+      </div>
+      {{ form.submit }}
+    </form>
+  </div>
+{% endblock %}
